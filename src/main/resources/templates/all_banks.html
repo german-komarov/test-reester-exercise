@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Добавить Банковскую Организацию</title>
+</head>
+
+<div align="left">
+    <a href="/addBank">Добавить Банковскую Организацию</a>
+
+</div>
+<body>
+<div align="center">
+    <h2>Сотрудники</h2>
+    <table border="1" cellpadding="10">
+        <thead>
+        <tr>
+
+            <th>Название</th>
+            <th>БИК</th>
+            <th>Адрес</th>
+            <th>Действия</th>
+
+
+        </tr>
+        </thead>
+        <tbody th:each="bank : ${banks}">
+        <tr >
+            <td th:text="${bank.name}"></td>
+            <td th:text="${bank.bic}"></td>
+            <td th:text="${bank.address}"></td>
+
+            <td>
+                <a th:href="@{'/updateBank/' + ${bank.id}}">Изменить</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+
+</div>
+
+
+
+</body>
+</html>

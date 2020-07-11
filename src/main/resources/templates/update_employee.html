@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <title>Изменить даныые о сотруднике</title>
+</head>
+<body>
+<div align="center">
+    <h1>Изменить даныые о сотруднике</h1>
+    <br />
+    <form action="#" th:action="@{/addEmployee}" th:object="${employee}"
+          method="post">
+
+        <table border="0" cellpadding="10">
+            <tr>
+
+                <td><input type="number" th:field="*{id}" readonly="readonly" hidden="hidden"/></td>
+            </tr>
+            <tr>
+                <td>Имя:</td>
+                <td><input type="text" th:field="*{name}" /></td>
+            </tr>
+            <tr>
+                <td>Фамилия:</td>
+                <td><input type="text" th:field="*{surname}" /></td>
+            </tr>
+            <tr>
+                <td>Отчество:</td>
+                <td><input type="text" th:field="*{patronymic}" /></td>
+            </tr>
+            <tr>
+                <td>Пол:</td>
+                <td><label  for="man">Мужской
+                    <input id="man" value="мужской"  name="gender" type="radio" th:field="*{gender}" />
+                </label>
+                </td>
+                <td><label for="woman">Женский
+                    <input id="woman" value="женский" name="gender" type="radio" th:field="*{gender}" />
+                </label></td>
+            </tr>
+            <tr>
+                <td>День рождения (дд.мм.гг):</td>
+                <td><input type="text" th:field="*{birthday}" /></td>
+            </tr>
+            <tr>
+                <td>Должность:</td>
+                <td><input type="text" name="positionName" th:value="${positionName}" /></td>
+            </tr>
+            <tr>
+                <td>Дата найма (дд.мм.гг):</td>
+                <td><input type="text" th:field="*{employmentDate}" /></td>
+            </tr>
+            <tr>
+                <td>Зарплата (в руб):</td>
+                <td><input type="text" th:field="*{salary}" /></td>
+            </tr>
+            <tr>
+                <td>Рабочий номер:</td>
+                <td><input type="text" th:field="*{jobPhoneNumber}" /></td>
+            </tr>
+            <tr>
+                <td>Личный номер:</td>
+                <td><input type="text" th:field="*{personalPhoneNumber}" /></td>
+            </tr>
+            <tr>
+                <td>Банк:</td>
+                <td><input type="text" name="bankName" th:value="${bankName}"/></td>
+            </tr>
+            <tr>
+                <td><input hidden="hidden" type="text" th:field="*{archived}" /></td>
+            </tr>
+
+            <tr>
+                <td colspan="2"><button type="submit">Save</button> </td>
+            </tr>
+        </table>
+    </form>
+</div>
+</body>
+</html>

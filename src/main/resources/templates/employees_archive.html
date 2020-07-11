@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Архив сотрудников</title>
+</head>
+
+<div align="left">
+    <a href="/employees">Сотрудники</a>
+
+</div>
+<body>
+<div align="center">
+    <h2>Архив сотрудников</h2>
+    <table border="1" cellpadding="10" >
+        <thead>
+        <tr>
+
+            <th>Имя</th>
+            <th>Фамилия</th>
+            <th>Отчество</th>
+            <th>Дата рождения</th>
+            <th>Позиция</th>
+            <th>Наняли</th>
+            <th>Зарплата</th>
+            <th>Рабочий номер</th>
+            <th>Личный номер</th>
+            <th>Банк</th>
+            <th>Действия</th>
+
+        </tr>
+        </thead>
+        <tbody th:each="employee : ${employees}">
+        <tr th:if="${employee.archived}">
+            <td th:text="${employee.name}"></td>
+            <td th:text="${employee.surname}"></td>
+            <td th:text="${employee.patronymic}"></td>
+            <td th:text="${employee.birthday}">
+            <td th:text="${employee.position.name}"></td>
+            <td th:text="${employee.employmentDate}"></td>
+            <td th:text="${employee.salary}"></td>
+            <td th:text="${employee.jobPhoneNumber}"></td>
+            <td th:text="${employee.personalPhoneNumber}">
+            <td th:text="${employee.bankOrganization.name}">
+
+            <td>
+                <a th:href="@{'/unarchiveEmployee/'+${employee.id}}">Разархивировать</a>
+            </td>
+
+        </tr>
+        </tbody>
+    </table>
+
+
+</div>
+
+
+
+</body>
+</html>
