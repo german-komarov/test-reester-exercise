@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Пользователи</title>
+</head>
+
+<body>
+<div align="center">
+    <h2>Пользователи</h2>
+    <table border="1" cellpadding="10" >
+        <thead>
+        <tr>
+
+            <th>Имя</th>
+            <th>Фамилия</th>
+            <th>Отчество</th>
+            <th>Дата рождения</th>
+            <th>Позиция</th>
+            <th>Наняли</th>
+            <th>Зарплата</th>
+            <th>Рабочий номер</th>
+            <th>Личный номер</th>
+            <th>Банк</th>
+
+
+        </tr>
+        </thead>
+        <tbody th:each="customer : ${customers}">
+        <tr th:unless="${customer.archived}">
+            <td th:text="${customer.name}"></td>
+            <td th:text="${customer.surname}"></td>
+            <td th:text="${customer.patronymic}"></td>
+            <td th:text="${customer.birthday}">
+            <td th:text="${customer.position.name}"></td>
+            <td th:text="${customer.employmentDate}"></td>
+            <td th:text="${customer.salary}"></td>
+            <td th:text="${customer.jobPhoneNumber}"></td>
+            <td th:text="${customer.personalPhoneNumber}">
+            <td th:text="${customer.bankOrganization.name}">
+
+        </tr>
+        </tbody>
+    </table>
+
+
+</div>
+
+
+
+</body>
+</html>

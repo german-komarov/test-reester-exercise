@@ -32,6 +32,7 @@
             <td th:text="${bank.address}"></td>
 
             <td>
+                <a th:href="@{'/allCustomers/' + ${bank.id}}">Пользователи</a>
                 <a th:href="@{'/updateBank/' + ${bank.id}}">Изменить</a>
             </td>
         </tr>

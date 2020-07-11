@@ -4,6 +4,7 @@ import org.thymeleaf.standard.expression.Each;
 
 import javax.persistence.*;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -16,6 +17,13 @@ public class Bank {
     private String bic;
     private String address;
 
+
+    @OneToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "bank_customer",
+            joinColumns = {@JoinColumn(name = "bank_id")},
+            inverseJoinColumns = {@JoinColumn(name = "customer_id")})
+    private List<Employee> customers;
 
 
     public Bank() {
@@ -53,5 +61,12 @@ public class Bank {
         this.address = address;
     }
 
+    public List<Employee> getCustomers() {
+        return customers;
+    }
+
+    public void setCustomers(List<Employee> customers) {
+        this.customers = customers;
+    }
 }
 

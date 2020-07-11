@@ -48,6 +48,17 @@ public class BankController {
         return "redirect:/banks";
     }
 
+    @PostMapping("/updateBank")
+    public String doUpdateBankPost(@ModelAttribute Bank bank)
+    {
+        Bank bank1=bankService.getBankById(bank.getId());
+        bank1.setBic(bank.getBic());
+        bank1.setAddress(bank.getAddress());
+        bankService.saveBank(bank1);
+        return "redirect:/banks";
+    }
+
+
 
 
 
@@ -55,8 +66,17 @@ public class BankController {
     public String doUpdateBankGet(@PathVariable Long id,Model model)
     {
         Bank bank=bankService.getBankById(id);
+        model.addAttribute("customers",bank.getCustomers());
         model.addAttribute("bank",bank);
         return "update_bank";
+    }
+
+    @GetMapping("/allCustomers/{id}")
+    public String doGetAllCustomers(@PathVariable Long id,Model model)
+    {
+        Bank bank=bankService.getBankById(id);
+        model.addAttribute("customers",bank.getCustomers());
+        return "all_customers";
     }
 
 

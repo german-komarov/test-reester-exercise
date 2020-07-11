@@ -1,6 +1,7 @@
 package com.example.test.entities;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 public class Employee {
@@ -28,7 +29,10 @@ public class Employee {
     private String personalPhoneNumber;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "bank_id")
+    @JoinTable(
+            name = "bank_customer",
+            joinColumns = {@JoinColumn(name = "customer_id")},
+            inverseJoinColumns = {@JoinColumn(name = "bank_id")})
     private Bank bankOrganization;
 
     private boolean isArchived;
@@ -140,4 +144,6 @@ public class Employee {
     public void setArchived(boolean archived) {
         isArchived = archived;
     }
+
+
 }
